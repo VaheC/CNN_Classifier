@@ -1,4 +1,4 @@
-import os 
+import os
 import urllib.request as request
 from zipfile import ZipFile
 from CNN_Classifier.entity import DataIngestionConfig
@@ -6,6 +6,7 @@ from CNN_Classifier import logger
 from CNN_Classifier.utils import get_size
 from tqdm import tqdm
 from pathlib import Path
+
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
@@ -25,13 +26,13 @@ class DataIngestion:
 
     def _get_updated_list_of_files(self, list_of_files):
         return [f for f in list_of_files if f.endswith(".jpg") and ("Cat" in f or "Dog" in f)]
-    
+
     def _preprocess(self, zf: ZipFile, f: str, working_dir: str):
         target_filepath = os.path.join(working_dir, f)
 
         if not os.path.exists(target_filepath):
             zf.extract(f, working_dir)
-        
+
         if os.path.getsize(target_filepath) == 0:
             logger.info(f"Removing file: {target_filepath} of size: {get_size(Path(target_filepath))}")
             os.remove(target_filepath)
