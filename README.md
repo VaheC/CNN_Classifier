@@ -13,3 +13,15 @@
 9. Run tox for testing your package
 10. Update the dvc.yaml
 11. Run "dvc repro" for running all the stages in pipeline
+
+STEP 1: Set the env variable | Get it from dagshub -> remote tab -> mlflow tab
+
+MLFLOW_TRACKING_URI=https://dagshub.com/VaheC/CNN_Classifier.mlflow
+MLFLOW_TRACKING_USERNAME=VaheC
+MLFLOW_TRACKING_PASSWORD=<> \
+
+STEP 2: install mlflow
+
+STEP 3: Set remote URI
+
+STEP 4: Use context manager of mlflow to start run and then log metrics, params and model
